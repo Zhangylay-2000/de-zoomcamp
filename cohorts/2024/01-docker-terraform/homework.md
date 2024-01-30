@@ -23,7 +23,7 @@ Which tag has the following text? - *Automatically remove the container when it 
 - `--delete`
 - `--rc`
 - `--rmc`
-- `--rm`
+- `--rm` +
 
 
 ## Question 2. Understanding docker first run 
@@ -35,7 +35,7 @@ What is version of the package *wheel* ?
 
 - 0.42.0
 - 1.0.0
-- 23.0.1
+- 23.0.1 +
 - 58.1.0
 
 
@@ -62,9 +62,12 @@ Tip: started and finished on 2019-09-18.
 Remember that `lpep_pickup_datetime` and `lpep_dropoff_datetime` columns are in the format timestamp (date and hour+min+sec) and not in date.
 
 - 15767
-- 15612
+- 15612 +
 - 15859
 - 89009
+
+  ![Снимок экрана 2024-01-29 202728](https://github.com/Zhangylay-2000/de-zoomcamp/assets/68446698/a2859668-e7b6-4de5-95a1-b0fc47670907)
+
 
 ## Question 4. Largest trip for each day
 
@@ -75,6 +78,10 @@ Use the pick up time for your calculations.
 - 2019-09-16
 - 2019-09-26
 - 2019-09-21
+
+ ![Снимок экрана 2024-01-29 202825](https://github.com/Zhangylay-2000/de-zoomcamp/assets/68446698/c8ee6eeb-4339-4b26-8cc6-a94793d554bf)
+
+
 
 
 ## Question 5. Three biggest pick up Boroughs
@@ -87,6 +94,9 @@ Which were the 3 pick up Boroughs that had a sum of total_amount superior to 500
 - "Bronx" "Brooklyn" "Manhattan"
 - "Bronx" "Manhattan" "Queens" 
 - "Brooklyn" "Queens" "Staten Island"
+
+  ![Снимок экрана 2024-01-29 202920](https://github.com/Zhangylay-2000/de-zoomcamp/assets/68446698/f1a08a59-1bb7-40a9-a444-b59bf0766e4c)
+
 
 
 ## Question 6. Largest tip
@@ -101,7 +111,7 @@ Note: it's not a typo, it's `tip` , not `trip`
 - JFK Airport
 - Long Island City/Queens Plaza
 
-
+ ![Снимок экрана 2024-01-29 203040](https://github.com/Zhangylay-2000/de-zoomcamp/assets/68446698/d91715b5-b89c-4483-ba53-f16d533af137)
 
 ## Terraform
 
