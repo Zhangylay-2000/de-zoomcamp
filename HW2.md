@@ -64,6 +64,31 @@ The goal will be to construct an ETL pipeline that loads the data, performs some
     - `vendor_id` is one of the existing values in the column (currently)
     - `passenger_count` is greater than 0
     - `trip_distance` is greater than 0
+  -----
+ @transformer
+def transform(data, *args, **kwargs):
+
+
+    # Remove rows where the passenger count is equal to 0 or the trip distance is equal to zero.
+    data = data[(data['passenger_count'] > 0) & (data['trip_distance'] > 0)]
+
+    # Create a new column lpep_pickup_date by converting lpep_pickup_datetime to a date.
+    data['lpep_pickup_date'] = data['lpep_pickup_datetime'].dt.date
+
+    # Rename columns in Camel Case to Snake Case, e.g. VendorID to vendor_id.
+    camel2snake_dict = {
+        'VendorID': 'vendor_id',
+        'RatecodeID': 'ratecode_id',
+        'PULocationID': 'pulocation_id',
+        'DOLocationID': 'dolocation_id'
+    }
+
+    data = data.rename(camel2snake_dict, axis=1)
+
+    return data
+
+
+  ----
 - Using a Postgres data exporter (SQL or Python), write the dataset to a table called `green_taxi` in a schema `mage`. Replace the table if it already exists.
 - Write your data as Parquet files to a bucket in GCP, partioned by `lpep_pickup_date`. Use the `pyarrow` library!
 - Schedule your pipeline to run daily at 5AM UTC.
