@@ -20,7 +20,8 @@ The goal will be to construct an ETL pipeline that loads the data, performs some
 - Add a data loader block and use Pandas to read data for the final quarter of 2020 (months `10`, `11`, `12`).
   - You can use the same datatypes and date parsing methods shown in the course.
   - `BONUS`: load the final three months using a for loop and `pd.concat`
- 
+
+ -----
     def load_data_from_api(*args, **kwargs):
     """
     Template for loading data from API
@@ -53,7 +54,7 @@ The goal will be to construct an ETL pipeline that loads the data, performs some
         dfs.append(pd.read_csv(url, sep=',', compression='gzip', dtype=taxi_dtypes, parse_dates=parse_dates))
 
     return pd.concat(dfs, ignore_index=True)
-
+---------
     
 - Add a transformer block and perform the following:
   - Remove rows where the passenger count is equal to 0 _and_ the trip distance is equal to zero.
