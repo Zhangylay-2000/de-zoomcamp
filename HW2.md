@@ -20,6 +20,41 @@ The goal will be to construct an ETL pipeline that loads the data, performs some
 - Add a data loader block and use Pandas to read data for the final quarter of 2020 (months `10`, `11`, `12`).
   - You can use the same datatypes and date parsing methods shown in the course.
   - `BONUS`: load the final three months using a for loop and `pd.concat`
+ 
+    def load_data_from_api(*args, **kwargs):
+    """
+    Template for loading data from API
+    url = f'https://github.com/DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2020-{i}.csv.gz'
+    """
+    dfs = []
+
+    taxi_dtypes = {
+        'VendorID': pd.Int64Dtype(),
+        'passenger_count': pd.Int64Dtype(),
+        'trip_distance': float,
+        'RatecodeID': pd.Int64Dtype(),
+        'store_and_fwd_flag': str,
+        'Publications': pd.Int64Dtype(),
+        'DOLocationID': pd.Int64Dtype(),
+        'payment_type': pd.Int64Dtype(),
+        'fair_amount': float,
+        'extra': float,
+        'mta_tax': float,
+        'tip_amount': float,
+        'tolls_amount': float,
+        'improvement_surcharge': float,
+        'total_amount': float,
+        'congestion_surcharge': float
+    }
+    parse_dates = ['lpep_pickup_datetime', 'lpep_dropoff_datetime']
+
+    for i in range(10, 13):
+        url = f'https://github.com/DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2020-{i}.csv.gz'
+        dfs.append(pd.read_csv(url, sep=',', compression='gzip', dtype=taxi_dtypes, parse_dates=parse_dates))
+
+    return pd.concat(dfs, ignore_index=True)
+
+    
 - Add a transformer block and perform the following:
   - Remove rows where the passenger count is equal to 0 _and_ the trip distance is equal to zero.
   - Create a new column `lpep_pickup_date` by converting `lpep_pickup_datetime` to a date.
