@@ -114,6 +114,28 @@ def export_data_to_postgres(df: DataFrame, **kwargs) -> None:
         )
 ---
 - Write your data as Parquet files to a bucket in GCP, partioned by `lpep_pickup_date`. Use the `pyarrow` library!
+
+---
+table_name = 'green_taxi.parquet'
+
+root_path = f'{bucket_name}/{table_name}'
+
+
+
+@data_exporter
+def export_data(data, *args, **kwargs):
+    table = pa.Table.from_pandas(data)
+    gcs = pa.fs.GcsFileSystem()
+
+    pq.write_to_dataset(
+        table,
+        root_path=root_path,
+        partition_cols=['lpep_pickup_date'],
+        filesystem=gcs
+    )
+
+
+---
 - Schedule your pipeline to run daily at 5AM UTC.
 
 ### Questions
